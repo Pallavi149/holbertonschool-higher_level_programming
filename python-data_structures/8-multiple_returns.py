@@ -4,6 +4,6 @@ def multiple_returns(sentence):
     length = len(my_string)
     if my_string is None:
         length = 0
-        return (length, None)
+        return (length, my_string)
     else:
         return (length, my_string[0])
