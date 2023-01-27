@@ -1,4 +1,4 @@
-#!/usr/bin/pythgon3
+#!/usr/bin/python3
 def uniq_add(my_list=[]):
     new_list = []
     sum = 0
