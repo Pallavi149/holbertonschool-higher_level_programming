@@ -7,5 +7,5 @@ def best_score(a_dictionary):
         if value > biggest_score:
             biggest_score = value
     for key, value in a_dictionary.items():
-        if value == biggest:
+        if value == biggest_score:
             return key
