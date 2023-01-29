@@ -17,14 +17,12 @@ def roman_to_int(roman_string):
         "D": 500,
         "M": 1000
     }
-
-
     result = 0
     length = len(roman_string)
     for i in range(length):
         value = r_dict.get(roman_string[i])
         if i < (length - 1) and value < r_dict.get(roman_string[i + 1]):
-            result  = result - value
+            result = result - value
         else:
             result = result + value
     return result
