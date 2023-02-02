@@ -10,6 +10,7 @@ class Rectangle:
     """
 
     def __init__(self, width=0, height=0):
+        """Initialises the rectangle"""
         self.__width = width
         self.__height = height
 
@@ -54,13 +55,17 @@ class Rectangle:
         else:
             pm = 2 * (self.__width + self.__height)
             return pm
+
     def __repr__(self):
+        """Returns a reproducible string representation of a rectangle"""
         return(f"Rectangle({self.__width}, {self.__height})")
 
     def __del__(self):
+        """Prints a message when an instance of Rectangle is deleted"""
         print("Bye rectangle...")
 
     def __str__(self):
+        """Returns a printable string representation of a rectangle"""
         if self.__width != 0 and self.__height != 0:
             string = ""
             for i in range(1, self.__height):
