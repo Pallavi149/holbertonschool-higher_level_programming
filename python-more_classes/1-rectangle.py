@@ -15,32 +15,32 @@ class Rectangle:
         self.width = width
         self.height = height
 
-        @property
-        def width(self):
-            """Property getter for __width. Returns the width"""
-            return self.__width
+    @property
+    def width(self):
+        """Property getter for __width. Returns the width"""
+        return self.__width
 
-        @width.setter
-        def width(self, value):
-            """Property setter for __width"""
-            if not isinstance(value, int):
-                raise TypeError("width must be an integer")
-            elif value < 0:
-                raise ValueError("width must be >= 0")
-            else:
-                self.__width = value
+    @width.setter
+    def width(self, value):
+        """Property setter for __width"""
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be >= 0")
+        else:
+            self.__width = value
 
-        @property
-        def height(self):
-            """Property getter for __height. Returns the height"""
-            return self.__height
+    @property
+    def height(self):
+        """Property getter for __height. Returns the height"""
+        return self.__height
 
-        @height.setter
-        def height(self, value):
-            """Property setter for __height"""
-            if not isinstance(value, int):
-                raise TypeError("height must be an integer")
-            elif value < 0:
-                raise ValueError("height must be >= 0")
-            else:
-                self.__height = value
+    @height.setter
+    def height(self, value):
+        """Property setter for __height"""
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        elif value < 0:
+            raise ValueError("height must be >= 0")
+        else:
+            self.__height = value
