@@ -18,16 +18,14 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """Initialises the rectangle"""
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
         Rectangle.number_of_instances = Rectangle.number_of_instances + 1
 
     @classmethod
     def square(cls, size=0):
         """Returns a new Rectangle instance with width == height == size"""
-        Rectangle.width = size
-        Rectangle.height = size
-        return cls(Rectangle.width, Rectangle.height)
+        return cls(size, size)
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
@@ -49,7 +47,7 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """Property setter for __width"""
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
         elif value < 0:
             raise ValueError("width must be >= 0")
@@ -73,14 +71,14 @@ class Rectangle:
 
     def area(self):
         """Public instance method returning the area"""
-        return self.__height * self.__width
+        return self.height * self.width
 
     def perimeter(self):
         """Public instance method returning the perimeter"""
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return 0
         else:
-            pm = 2 * (self.__width + self.__height)
+            pm = 2 * (self.width + self.height)
             return pm
 
     def __repr__(self):
