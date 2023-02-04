@@ -1,0 +1,42 @@
+The ``3-say_my_name`` module
+----------------------------
+
+using ``say_my_name``
+---------------------
+
+This is say_my_name text file.  First import
+``add_integer`` from the ``0-add_integer`` module:
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test for two strings
+     >>> say_my_name("Pallavi", "Jagtap")
+     My name is Pallavi Jagtap
+
+Test for single string
+     >>> say_my_name("Pallavi")
+     My name is Pallavi 
+
+Test for first arg string and second arg non-string
+     >>> say_my_name("Pallavi", 1)
+     Traceback (most recent call last):
+     ...
+     TypeError: last_name must be a string
+
+Test for first arg non-string and second arg string
+     >>> say_my_name(1, "Pallavi")
+     Traceback (most recent call last):
+     ...
+     TypeError: first_name must be a string
+
+Test for string with None
+     >>> say_my_name("Pallavi", None)
+     Traceback (most recent call last):
+     ...
+     TypeError: last_name must be a string
+
+Test for None with string
+     >>> say_my_name(None, "Pallavi")
+     Traceback (most recent call last):
+     ...
+     TypeError: first_name must be a string
