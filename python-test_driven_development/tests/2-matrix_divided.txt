@@ -1,0 +1,65 @@
+The ``2-matrix_divided`` module
+----------------------------
+
+using ``matrix_divided``
+---------------------
+
+This is matrix divided test text file.  First import
+``matrix_divided`` from the ``2-matrix_divided`` module:
+
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Now use it:
+
+Test for None as matrix
+     >>> matrix_divided(None, 10)
+     Traceback (most recent call last):
+     ...
+     TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test for passing None as div:
+     >>> matrix = [[1, 2, 3], [4, 5, 6]]
+     >>> matrix_divided(matrix, None)
+     Traceback (most recent call last):
+     ...
+     TypeError: div must be a number
+
+Test for div == 0
+     >>> matrix = [[1, 2, 3], [4, 5, 6]]
+     >>> matrix_divided(matrix, 0)
+     Traceback (most recent call last):
+     ...
+     ZeroDivisionError: division by zero
+
+Test for if string as a matrix
+     >>> matrix = "hello"
+     >>> matrix_divided(matrix, 3)
+     Traceback (most recent call last):
+     ...
+     TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test for div is greater than 0
+     >>> matrix = [[10, 20, 30], [40, 50, 60]]
+     >>> matrix_divided(matrix, 10)
+     [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+Test for if string as a matrix
+     >>> matrix = [[9, 2, 3], "hello"]
+     >>> matrix_divided(matrix, 1)
+     Traceback (most recent call last):
+     ...
+     TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test for different length rows
+     >>> matrix = [[1], [1, 2, 3]]
+     >>> matrix_divided(matrix, 5)
+     Traceback (most recent call last):
+     ...
+     TypeError: Each row of the matrix must have the same size
+
+Test for different length rows
+     >>> matrix = [[1, 2, 3], [5, 2]]
+     >>> matrix_divided(matrix, 5)
+     Traceback (most recent call last):
+     ...
+     TypeError: Each row of the matrix must have the same size
