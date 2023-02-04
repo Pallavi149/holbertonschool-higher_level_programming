@@ -1,0 +1,31 @@
+The ``5-text_indentation`` module
+---------------------------------
+
+Using ``text_indentation``
+----------------------
+
+Importing function from module:
+	  >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Test for normal functioning
+     >>> text_indentation("Hello. How are you? Ready for the day:")
+     Hello.
+     <BLANKLINE>
+     How are you?
+     <BLANKLINE>
+     Ready for the day:
+     <BLANKLINE>
+
+Test for non-string text
+     >>> text_indentation(8)
+     Traceback (most recent call last):
+     ...
+     TypeError: text must be a string
+
+Test for handling of newline in string:
+     >>> text_indentation(":Hello: Friend")
+     :
+     <BLANKLINE>
+     Hello:
+     <BLANKLINE>
+     Friend
