@@ -24,6 +24,15 @@ class TestMaxInteger(unittest.TestCase):
     def test_float_max(self):
         self.assertEqual(max_integer([1, 44.4, 6, 9, 12]), 44.4)
 
+    def test_one_item_list(self):
+        self.assertEqual(max_integer([12]), 12)
+
+    def test_negative_item(self):
+        self.assertEqual(max_integer([1, -44.4, 6, 9, 12]), 12)
+
+    def test_all_negative(self):
+        self.assertEqual(max_integer([-1, -44.4, -6, -9, -12]), -1)
+
     def test_float_inf(self):
         self.assertEqual(max_integer([1, 44.4, 6, 9, 12,
                                       float('inf')]), float("inf"))
