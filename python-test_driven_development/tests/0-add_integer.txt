@@ -13,5 +13,36 @@ Now use it:
 
     >>> add_integer(2)
     100
+
     >>> add_integer(2, 98)
     100
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer(-4, 2)
+    -2
+
+    >>> add_integer(4, -2)
+    2
+
+    >>> add_integer(12.5, 5)
+    17
+
+    >>> add_integer(12, 5.5)
+    17
+
+    >>> add_integer(12.5, 5.5)
+    17
+
+    >>> add_integer("hi", 5)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer(4, "hi")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
