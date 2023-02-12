@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """
-Module containing "Student" class
+A class named Student
 """
 
 
 class Student:
     """
-    Representation of a student
+    A class that defines students
     """
     def __init__(self, first_name, last_name, age):
         """
-        Instantiation of a student
+        Instantiation of students
         """
         self.first_name = first_name
         self.last_name = last_name
@@ -18,13 +18,10 @@ class Student:
 
     def to_json(self, attrs=None):
         """
-        Public instance method returning a JSON
-        dictionary of a student instance. If attrs is
-        a list of strings, a new dictionary is returned
-        comprising only the attributes from attrs
+        Return: dict representation of Student instances
         """
-         attr_dict = {}
-         if type(attrs) == list:
+        attr_dict = {}
+        if type(attrs) == list:
             for att in attrs:
                 if hasattr(self, att):
                     attr_dict[att] = getattr(self, att)
