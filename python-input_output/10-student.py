@@ -23,13 +23,10 @@ class Student:
         a list of strings, a new dictionary is returned
         comprising only the attributes from attrs
         """
-        if isinstance(attrs, list):
-            for element in attrs:
-                if not isinstance(element, str):
-                    return self.__dict__
-                else:
-                    return {element: self.__dict__[element]
-                            for element in attrs if
-                            hasattr(self, element)}
-        else:
-            return self.__dict__
+         attr_dict = {}
+         if type(attrs) == list:
+            for att in attrs:
+                if hasattr(self, att):
+                    attr_dict[att] = getattr(self, att)
+            return attr_dict
+        return(self.__dict__)
