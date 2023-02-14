@@ -12,7 +12,7 @@ class Rectangle(Base):
         Constructor for instantiation of a Rectangle.
         Super class called with id
         """
-        if type(width) != int :
+        if type(width) != int:
             raise TypeError("width must be an integer")
         elif width <= 0:
             raise ValueError("width must be > 0")
