@@ -141,8 +141,8 @@ class Rectangle(Base):
         """Dictionary representation of a Rectangle"""
         s_dict = {}
         s_dict["id"] = self.id
-        s_dict["size"] = self.width
-        s_dict["size"] = self.height
+        s_dict["width"] = self.width
+        s_dict["height"] = self.height
         s_dict["x"] = self.x
         s_dict["y"] = self.y
         return s_dict
