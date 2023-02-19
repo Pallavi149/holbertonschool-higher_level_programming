@@ -21,10 +21,10 @@ class SquareMethods(unittest.TestCase):
     r1 = Square(4, 5, 7)
     self.assertEqual(r1.width, 4)
 
-  def test_size_non_int(self):
+  def test_size(self):
     """Test handling non-ints for width"""
     with self.assertRaises(TypeError):
-      Square("hello")
+      Square("11")
 
   def test_size_negative(self):
     """Test handling width <= 0 for width"""
@@ -67,6 +67,8 @@ class SquareMethods(unittest.TestCase):
     """Test for handling y >= 0"""
     with self.assertRaises(ValueError):
       Square(2, 2, -4, 5)
+    with self.assertRaises(ValueError):
+      Square(2, 2, -4)
 
   def test_area(self):
     """Tests for normal functioning of area"""
@@ -147,11 +149,11 @@ class SquareMethods(unittest.TestCase):
  {"y": 0, "x": 0, "id": 2, "size": 2}])
 
   def test_to_save_to_file_none_list(self):
-    Square.save_to_file(None)
+    s = Square(10)
+    s.save_to_file(None)
     with open("Square.json", "r") as file:
       self.assertEqual(file.read(), "[]")
-  def test_to_save_to_file_empty_list(self):
-    Square.save_to_file([])
+    s.save_to_file([])
     with open("Square.json", "r") as file:
       self.assertEqual(file.read(), "[]")
 
