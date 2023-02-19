@@ -3,6 +3,7 @@
 Module containing Base class
 """
 import json
+import os.path
 
 
 class Base:
@@ -16,6 +17,10 @@ class Base:
         else:
             Base.__nb_objects = Base.__nb_objects + 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def get_nb_objects():
+        return Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -53,3 +58,31 @@ class Base:
                 dict_list.append(obj.to_dictionary())
             j_string = cls.to_json_string(dict_list)
             f.write(j_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Using a dummy instance, returns an
+        instance with pre-set attributes using kwargs
+        """
+        if cls.__name__ == "Square":
+            dummy = cls(10)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(10, 10)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Public method that returns a list of instances
+        """
+        list_josn_obj = []
+        list_obj = []
+        filename = cls.__name__ + ".json"
+        if os.path.exists(filename):
+            with open(filename, "r", encoding="utf-8") as f:
+                list_josn_obj = cls.from_json_string(f.read())
+                for obj in list_josn_obj:
+                    list_obj.append(cls.create(**obj))
+        return list_obj
