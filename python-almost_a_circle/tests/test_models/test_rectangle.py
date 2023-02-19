@@ -1,6 +1,8 @@
 import unittest
 import json
 import os
+import io
+import sys
 from models.rectangle import Rectangle
 
 class RectangleMethods(unittest.TestCase):
@@ -16,10 +18,17 @@ class RectangleMethods(unittest.TestCase):
     self.assertEqual(r1.id, Rectangle.get_nb_objects())
 
 
-  def test_width(self):
+  def test_constructor(self):
     """Tests for handling width"""
-    r1 = Rectangle(4, 2, 5, 6, 7)
-    self.assertEqual(r1.width, 4)
+    r1 = Rectangle(4, 2)
+    self.assertEqual(str(r1),
+                     f"[Rectangle] ({Rectangle.get_nb_objects()}) 0/0 - 4/2")
+    r1 = Rectangle(4, 2, 1)
+    self.assertEqual(str(r1),
+                     f"[Rectangle] ({Rectangle.get_nb_objects()}) 1/0 - 4/2")
+    r1 = Rectangle(4, 2, 1, 2)
+    self.assertEqual(str(r1),
+                     f"[Rectangle] ({Rectangle.get_nb_objects()}) 1/2 - 4/2")
 
   def test_width_non_int(self):
     """Test handling non-ints for width"""
@@ -144,10 +153,11 @@ class RectangleMethods(unittest.TestCase):
                        [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7},
  {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}])
 
-  def test_to_save_to_file_empty_list(self):
+  def test_to_save_to_file_none_list(self):
     Rectangle.save_to_file(None)
     with open("Rectangle.json", "r") as file:
       self.assertEqual(file.read(), "[]")
+  def test_to_save_to_file_empty_list(self):
     Rectangle.save_to_file([])
     with open("Rectangle.json", "r") as file:
       self.assertEqual(file.read(), "[]")
@@ -195,6 +205,30 @@ class RectangleMethods(unittest.TestCase):
     os.remove("Rectangle.json")
     self.assertEqual(Rectangle.load_from_file(), [])
 
+  def test_display_with_no_xy(self):
+    r1 = Rectangle(4, 3)
+    capturedOutput = io.StringIO()
+    sys.stdout = capturedOutput
+    r1.display()
+    sys.stdout = sys.__stdout__
+    self.assertEqual(capturedOutput.getvalue(),
+                     "####\n####\n####\n")
+  def test_display_with_no_y(self):
+    r1 = Rectangle(4, 3, 1)
+    capturedOutput = io.StringIO()
+    sys.stdout = capturedOutput
+    r1.display()
+    sys.stdout = sys.__stdout__
+    self.assertEqual(capturedOutput.getvalue(),
+                     " ####\n ####\n ####\n")
+  def test_display_with_xy(self):
+    r1 = Rectangle(4, 3, 1, 2)
+    capturedOutput = io.StringIO()
+    sys.stdout = capturedOutput
+    r1.display()
+    sys.stdout = sys.__stdout__
+    self.assertEqual(capturedOutput.getvalue(),
+                     "\n\n ####\n ####\n ####\n")
 
 if __name__ == '__main__':
   unittest.main()

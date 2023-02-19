@@ -146,10 +146,11 @@ class SquareMethods(unittest.TestCase):
                        [{"y": 8, "x": 2, "id": 1, "size": 10},
  {"y": 0, "x": 0, "id": 2, "size": 2}])
 
-  def test_to_save_to_file_empty_list(self):
+  def test_to_save_to_file_none_list(self):
     Square.save_to_file(None)
     with open("Square.json", "r") as file:
       self.assertEqual(file.read(), "[]")
+  def test_to_save_to_file_empty_list(self):
     Square.save_to_file([])
     with open("Square.json", "r") as file:
       self.assertEqual(file.read(), "[]")
