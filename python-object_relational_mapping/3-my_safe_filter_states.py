@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # Execute the SQL query to fetch all the states in the database
     cursor.execute(query, name)
 
-    #Fetch all the rows and display them
+    # Fetch all the rows and display them
     rows = cursor.fetchall()
     for row in rows:
         print(row)
