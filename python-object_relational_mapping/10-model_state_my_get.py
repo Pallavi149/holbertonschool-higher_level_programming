@@ -23,4 +23,4 @@ if __name__ == "__main__":
         state = query.one()
         print("{}".format(state.id))
     except NoResultFound:
-        print("Not Found", file=sys.stderr)
+        sys.stderr.write("Not Found\n")
