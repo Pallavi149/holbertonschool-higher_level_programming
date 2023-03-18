@@ -19,8 +19,7 @@ if __name__ == "__main__":
     # Create a cursor object to execute a query
     cursor = db.cursor()
 
-
-    query = "SELECT cities.state_id, cities.name, states.name\
+    query = "SELECT cities.id, cities.name, states.name\
              FROM cities\
              LEFT JOIN states\
              ON cities.state_id = states.id\
