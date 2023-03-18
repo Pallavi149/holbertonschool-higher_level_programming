@@ -19,8 +19,9 @@ if __name__ == "__main__":
     name = sys.argv[4]
     query = session.query(State)\
                    .filter(State.name == name).order_by(State.id)
-    try:
-        state = query.one()
-        print("{}".format(state.id))
-    except NoResultFound:
-        sys.stderr.write("Not Found\n")
+
+    state = query.first()
+    if state:
+        print(state.id)
+    else:
+        print("Not Found")
