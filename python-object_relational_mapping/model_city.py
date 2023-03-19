@@ -8,10 +8,6 @@ and an instance Base = declarative_base()
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from model_state import Base, State
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
 
 class City(Base):
     """Creating the City class as a child of Base"""
@@ -20,8 +16,4 @@ class City(Base):
                 unique=True, autoincrement=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
-    state = relationship("State", back_populates="cities")
-
-
-State.cities = relationship("City",
-                            order_by=City.id, back_populates="state")
+    state = relationship(State, backref="cities")
