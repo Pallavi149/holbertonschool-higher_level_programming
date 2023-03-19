@@ -19,7 +19,7 @@ if __name__ == "__main__":
     name = sys.argv[4]
     query = session.query(State)\
                    .filter(State.name == name).order_by(State.id)
-    state = query.one()
+    state = query.first()
 
     if state:
         print("{}".format(state.id))
