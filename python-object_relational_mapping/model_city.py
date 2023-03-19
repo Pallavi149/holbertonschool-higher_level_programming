@@ -9,6 +9,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from model_state import Base, State
 
+
 class City(Base):
     """Creating the City class as a child of Base"""
     __tablename__ = "cities"
