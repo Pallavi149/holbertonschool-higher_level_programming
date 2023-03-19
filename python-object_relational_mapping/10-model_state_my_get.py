@@ -23,5 +23,5 @@ if __name__ == "__main__":
         state = query.one()
         print("{}".format(state.id))
     except NoResultFound:
-        print("Not Found")
+        sys.error("Not Found\n")
         sys.exit("Not found")
