@@ -2,10 +2,10 @@
 
 exports.nbOccurences = function (list, searchElement) {
   let total = 0;
-  for(var element of list) {
-    if(element == searchElement) {
+  for (let element = 0; element < list.length; element++) {
+    if (list[element] === searchElement) {
       total++;
     }
   }
   return total;
-}
+};
